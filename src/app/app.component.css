@@ -1,0 +1,19 @@
+/* Estilo para la barra de navegación */
+.navbar {
+    background-color: #007bff; /* Azul primario */
+    border-bottom: 2px solid #000; /* Borde negro en la parte inferior de la barra de navegación */
+  }
+  
+  .navbar-brand {
+    color: #fff; /* Texto blanco para la marca */
+    font-weight: bold; /* Fuente en negrita */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff; /* Texto blanco para los enlaces */
+    margin-right: 15px; /* Espacio entre los enlaces */
+  }
+  
+  .navbar-nav .nav-link.active {
+    border-bottom: 2px solid #fff; /* Línea blanca debajo del enlace activo */
+  }

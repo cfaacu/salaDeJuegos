@@ -1,0 +1,67 @@
+.quien-soy-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border: 2px solid #000; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+    background-color: white
+  }
+  
+  .component-container {
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .component-container h1 {
+    color: #007bff; 
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+  }
+  
+  .details h2,
+  .game-explanation h2 {
+    color: #007bff; 
+    border-bottom: 2px solid #007bff; 
+    padding-bottom: 5px;
+    margin-bottom: 20px; 
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #000; 
+    margin-right: 20px; 
+  }
+  
+  .personal-info {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 20px; 
+    border: 2px solid #000; 
+    border-radius: 8px; 
+    padding: 10px;
+    background-color: #fff; 
+  }
+  
+  .component-container p {
+    color: #333; 
+    margin: 10px 0;
+  }
+  
+  .game-explanation {
+    padding-top: 20px;
+    border: 2px solid #000; 
+    border-radius: 8px;
+    padding: 10px; 
+    background-color: #fff; 
+  }
+  
