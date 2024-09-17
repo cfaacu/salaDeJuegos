@@ -1,11 +1,15 @@
 <form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">Inicia sesion</h1>
     <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" id="inputEmail" class="form-control" name="email" [(ngModel)]="email" placeholder="Email address" required>
+    <input type="email" id="inputEmail" class="form-control" name="email" [(ngModel)]="email" placeholder="Email" required>
     <br>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="password" placeholder="Password"
         required>
     <button class="btn btn-lg btn-primary btn-block" (click)="login()">Ingresar</button>
     <button class="btn btn-lg btn-secondary btn-block" (click)="accesoRapido()">Acceso Rapido</button>
+    <div *ngIf="msjError" class="alert alert-danger">
+        {{ msjError }}
+    </div>
+    <br>
 </form>

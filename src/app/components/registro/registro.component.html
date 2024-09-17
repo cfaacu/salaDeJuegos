@@ -1,0 +1,18 @@
+<form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" id="inputEmail" class="form-control" name="email" [(ngModel)]="email" placeholder="Email" required>
+    <br>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" required>
+    <br>
+
+    <div *ngIf="msjError" class="alert alert-danger">
+        {{ msjError }}
+    </div>
+    <br>
+
+    <button class="btn btn-lg btn-primary btn-block" (click)="registro()">Registrar</button>
+</form>

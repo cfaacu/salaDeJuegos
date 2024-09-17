@@ -17,3 +17,20 @@
   .navbar-nav .nav-link.active {
     border-bottom: 2px solid #fff; /* Línea blanca debajo del enlace activo */
   }
+
+  .login-btn
+  {
+    margin-left: 1;
+  }
+
+  .session-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    text-align: center;
+  }
+
+  .session-container p {
+    margin-top: 1rem;
+  }
