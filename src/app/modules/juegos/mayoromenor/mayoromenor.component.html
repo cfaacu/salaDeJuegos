@@ -1,1 +1,24 @@
-<p>mayoromenor works!</p>
+<div class="game-container">
+  <h1>Juego Mayor o Menor</h1>
+  
+  <div class="scoreboard">
+    <p>Puntaje: <span>{{ puntaje }}</span></p>
+    <p>Intentos restantes: <span>{{ intentos }}</span></p>
+  </div>
+
+  <div *ngIf="cartaActual" class="card-display">
+    <h2>Carta Actual</h2>
+    <img [src]="cartaActual.image" alt="{{ cartaActual.value }} de {{ cartaActual.suit }}" class="card-image">
+  </div>
+
+  <div *ngIf="juegoTerminado" class="game-over">
+    <p>{{ mensaje }}</p>
+    <button (click)="iniciarJuego()" class="btn">Volver a Jugar</button>
+  </div>
+
+  <div *ngIf="!juegoTerminado && cartaSiguiente" class="guess-section">
+    <p>¿La siguiente carta será mayor o menor?</p>
+    <button (click)="adivinar('mayor')" class="btn">Mayor</button>
+    <button (click)="adivinar('menor')" class="btn">Menor</button>
+  </div>
+</div>

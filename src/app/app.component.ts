@@ -12,7 +12,7 @@ import { JuegosModule } from './modules/juegos/juegos.module';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnChanges {
+export class AppComponent{
   title = 'salaDeJuegos';
   constructor(public auth: Auth)
   {
@@ -21,11 +21,5 @@ export class AppComponent implements OnChanges {
   logOut()
   {
     signOut(this.auth);
-    console.log(this.auth); 
-    localStorage.removeItem("username");
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("Hola", this.auth.currentUser);
   }
 }

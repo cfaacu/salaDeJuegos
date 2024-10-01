@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { MayoromenorComponent } from './mayoromenor/mayoromenor.component';
 import { PreguntadosComponent } from './preguntados/preguntados.component';
+import { DeckService } from '../../services/deck.service';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [DeckService]
 })
 export class JuegosRoutingModule { }

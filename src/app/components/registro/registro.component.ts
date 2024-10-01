@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -12,41 +13,15 @@ import { Router } from '@angular/router';
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
-  nombre!:string;
   email!:string;
   password!:string;
-  admin!:boolean;
-  usuarioLogueado!:string;
-  msjError:string = "";
-  constructor(public auth:Auth, private router :Router)
+
+  constructor(private auth:AuthService)
   {
 
   }
   registro()
   {
-    createUserWithEmailAndPassword(this.auth,this.email,this.password).then((res)=>{
-      if(res.user.email !== null)
-      {
-          this.usuarioLogueado = res.user.email;
-          this.router.navigate(["/home"]);
-      } 
-    }).catch((e)=>{
-      console.log(e.code);
-      switch(e.code)
-      {
-        case "auth/invalid-email":
-          this.msjError = "Email invalido";
-          break;
-        case "auth/email-already-in-use":
-          this.msjError = "El email ya esta en uso";
-          break;
-        case "auth/weak-password":
-        this.msjError = "La contraseña es muy debil";
-        break;
-        default:
-          this.msjError = e.code;
-          break;
-      }
-    })
+    this.auth.register(this.email,this.password);
   }
 }

@@ -1,0 +1,26 @@
+.mensajes {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    background: rgb(221,249,255);
+    background: linear-gradient(180deg, rgba(221,249,255,1) 0%, rgba(205,205,255,1) 100%);
+    border-radius: 10px;
+  }
+
+.text-user
+{
+  color: rgb(60, 76, 202);
+}
+
+.form-control
+{
+  background: rgb(221,249,255);
+  background: linear-gradient(180deg, rgba(221,249,255,1) 0%, rgba(205,205,255,1) 100%);
+}
+
+.bg-chat{
+  background: rgb(174,224,235);
+  background: linear-gradient(180deg, rgba(174,224,235,1) 0%, rgba(68,68,163,1) 100%);
+}
+  

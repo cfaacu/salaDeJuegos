@@ -4,6 +4,7 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signO
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { addDoc, collection, collectionData, Firestore, orderBy, query} from '@angular/fire/firestore';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
   usuarioLogueado! : string;
   msjError : string = "";
   
-  constructor(public auth: Auth, private router : Router, private firestore : Firestore)
+  constructor(private auth: AuthService)
   {
     
   }
@@ -30,14 +31,7 @@ export class LoginComponent {
 
   login() 
   {
-    signInWithEmailAndPassword(this.auth, this.email, this.password).then((res)=>{
-    
-    let col = collection(this.firestore, "logs");
-    addDoc(col, {fechaInicio: new Date(), usuario: this.email});
-    
-    this.router.navigate(["/home"]);
-    localStorage.setItem("username",this.email);
-    }).catch((e)=> this.msjError = "Datos Invalidos")
+    this.auth.singIn(this.email,this.password);
   }
 
   

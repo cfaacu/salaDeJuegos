@@ -1,4 +1,9 @@
 /* Estilo para la barra de navegación */
+html,body{
+  margin: 0;
+  width: 100vh;
+}
+
 .navbar {
     background-color: #007bff; /* Azul primario */
     border-bottom: 2px solid #000; /* Borde negro en la parte inferior de la barra de navegación */

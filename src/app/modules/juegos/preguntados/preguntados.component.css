@@ -1,0 +1,81 @@
+.game-container {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    max-height: 660px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  h1 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  img {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #007bff;
+  }
+  
+  .options {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre botones */
+  }
+  
+  button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Aumento de tamaño en hover */
+  }
+  
+  button:active {
+    transform: scale(0.95); /* Efecto de clic */
+  }
+  
+  p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .score {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #28a745; /* Verde para puntaje */
+  }
+  
+  .message {
+    font-size: 18px;
+    margin-top: 10px;
+    transition: color 0.3s;
+  }
+  
+  .correct {
+    color: #28a745; /* Verde para correcto */
+  }
+  
+  .incorrect {
+    color: #dc3545; /* Rojo para incorrecto */
+  }
+  
+  

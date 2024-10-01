@@ -4,6 +4,7 @@
     border: 2px solid #000; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
   }
   
   .centered-container {
@@ -11,7 +12,9 @@
     justify-content: center;
     align-items: center; 
     height: 100vh; 
-    background-color: white
+    background-image: url(https://images.unsplash.com/photo-1588420343728-7411f4c87441?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .component-container {
@@ -20,18 +23,20 @@
   }
   
   .component-container h1 {
-    color: #007bff; 
+    color: #464a50; 
     margin-bottom: 20px;
     border-bottom: 2px solid #000;
     padding-bottom: 10px;
+    font-weight: bold;
   }
   
   .details h2,
   .game-explanation h2 {
-    color: #007bff; 
-    border-bottom: 2px solid #007bff; 
+    color: #464a50; 
+    border-bottom: 2px solid #464a50; 
     padding-bottom: 5px;
     margin-bottom: 20px; 
+    font-weight: bold;
   }
   
   .profile-image {
@@ -49,12 +54,12 @@
     border: 2px solid #000; 
     border-radius: 8px; 
     padding: 10px;
-    background-color: #fff; 
   }
   
   .component-container p {
     color: #333; 
     margin: 10px 0;
+    font-weight: bold;
   }
   
   .game-explanation {
@@ -62,6 +67,5 @@
     border: 2px solid #000; 
     border-radius: 8px;
     padding: 10px; 
-    background-color: #fff; 
   }
   

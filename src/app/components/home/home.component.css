@@ -1,26 +1,45 @@
- 
+
   .contenedor-card {
     display: flex; 
     flex-wrap: wrap; 
-    justify-content: center; 
+    justify-content: space-evenly; 
     gap: 20px; 
     padding: 20px; 
+    align-items: center;
   }
   
   .card {
-    border: 2px solid #007bff; 
+    border: 2px solid #78b1ef; 
     border-radius: 10px; 
     overflow: hidden; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    max-height: 65vh; /* Asegúrate de que las cards tengan un límite de altura */
+    min-height: 65vh;
+    margin-bottom: 5rem;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Asegura que todo dentro de la card esté en columna */ 
+    background: rgb(221,249,255);
+    background: linear-gradient(180deg, rgba(221,249,255,1) 0%, rgba(205,205,255,1) 100%);
   }
-  
   .card-img-top {
-    height: 180px; 
-    object-fit: cover; 
+    height: 150px;
+    background-size: cover;
   }
   
   .card-body {
-    padding: 15px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    height: 100%;
+  }
+
+  .card-btn {
+    margin-top: auto; /* Empuja el botón a la parte inferior */
+  }
+  
+  .card-btn a {
+    width: 100%;
   }
   
   .card-title {
@@ -42,3 +61,61 @@
     border-color: #00408d; 
   }
   
+  .chat-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-chat
+  { 
+    width: 200px;
+    height: 50px;
+    z-index: 1000;
+    position: absolute;
+  }
+
+  .btn-chat-on
+  {
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 90%;
+    font-size: x-large;
+  }
+
+  .chat-on{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat{
+    width: 75%;
+  }
+@media (min-width: 1520px) and (max-width: 1900px) {
+    .card {
+        max-height: 65vh; 
+        min-height: 65vh;
+    }
+}
+
+@media (min-width: 1900px) {
+    .card {
+        max-height: 55vh; 
+        min-height: 55vh;
+        min-width: 350px;
+        max-width: 350px;
+        font-size: 20px;
+        margin-top: 50px;
+    }
+
+    .btn-chat-off{
+      margin-top: 120px;
+    }
+
+    .chat{
+      margin-top: 100px;
+    }
+}
