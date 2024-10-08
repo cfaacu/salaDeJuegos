@@ -3,6 +3,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -25,8 +27,14 @@ export const routes: Routes = [
         component:RegistroComponent
     },
     {
+        path:'encuesta',
+        component:EncuestaComponent,
+        canActivate: [authGuard]
+    },
+    {
         path: 'juegos',
-        loadChildren: ()=> import ('./modules/juegos/juegos.module').then(m => m.JuegosModule)
+        loadChildren: ()=> import ('./modules/juegos/juegos.module').then(m => m.JuegosModule),
+        canActivate: [authGuard]
     },
     {
         path:'**', pathMatch:'full', component: HomeComponent

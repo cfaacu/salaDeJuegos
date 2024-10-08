@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../../services/pokemon.service';
+import { AuthService } from '../../../services/auth.service';
+import { StorageService } from '../../../services/storage.service';
+import { Puntuacion } from '../../../clases/puntuacion';
 
 @Component({
   selector: 'app-preguntados',
@@ -12,11 +15,11 @@ export class PreguntadosComponent implements OnInit {
   mensaje: string = '';
   mensajeClase: string = '';
   puntaje: number = 0;
-  intentos: number = 0; // Contador de intentos
-  maxIntentos: number = 5; // Límite de intentos
-  juegoTerminado: boolean = false; // Bandera para el estado del juego
+  intentos: number = 0; 
+  maxIntentos: number = 5; 
+  juegoTerminado: boolean = false;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService, public auth : AuthService, public storage : StorageService) {}
 
   ngOnInit() {
     this.generarPregunta();
@@ -25,32 +28,26 @@ export class PreguntadosComponent implements OnInit {
   generarPregunta() {
     if (this.intentos < this.maxIntentos) {
       this.pokemonService.getRandomPokemon().subscribe(p => {
-        // Generar las opciones justo después de recibir el Pokémon
         this.generarOpciones(p);
       });
     } else {
-      this.juegoTerminado = true; // Terminar el juego si se alcanzó el límite de intentos
+      this.juegoTerminado = true;
     }
   }
   
 
   generarOpciones(correctAnswer: any) {
-    // Generar 3 opciones incorrectas
     this.pokemonService.getPokemonOptions(3).subscribe(pokemons => {
       this.pokemon = correctAnswer;
       this.opciones = [correctAnswer.name];
       
-      // Agregar opciones incorrectas
       pokemons.forEach(p => {
         if (!this.opciones.includes(p.name)) {
           this.opciones.push(p.name);
         }
       });
-      
-      // Mezclar las opciones
+    
       this.opciones.sort(() => Math.random() - 0.5);
-      
-      // Aquí puedes añadir una notificación o mensaje que indique que ya están las opciones listas
     });
   }
   
@@ -63,14 +60,14 @@ export class PreguntadosComponent implements OnInit {
     } else {
       this.mensaje = `Incorrecto. El Pokémon era ${this.pokemon.name}.`;
       this.mensajeClase = 'incorrect';
-      this.intentos++; // Incrementar el contador de intentos
+      this.intentos++;
     }
 
-    // Generar nueva pregunta o terminar el juego
     if (this.intentos < this.maxIntentos) {
       this.generarPregunta();
     } else {
-      this.juegoTerminado = true; // Terminar el juego si se alcanzó el límite de intentos
+      this.juegoTerminado = true;
+      this.guardarPuntaje();
     }
   }
 
@@ -79,5 +76,24 @@ export class PreguntadosComponent implements OnInit {
     this.intentos = 0;
     this.juegoTerminado = false;
     this.generarPregunta();
+  }
+
+  guardarPuntaje() {
+    if (this.auth.usuario) {
+      const puntuacion: Puntuacion = {
+        email: this.auth.usuario.email,
+        puntuacion: this.puntaje,
+        fecha: new Date(),
+        juego: 'preguntados'
+      };
+
+      this.storage.saveDocNoId(puntuacion, 'puntuaciones')
+        .then(() => {
+          console.log('Puntuación guardada con éxito');
+        })
+        .catch((error) => {
+          console.error('Error al guardar la puntuación: ', error);
+        });
+    }
   }
 }

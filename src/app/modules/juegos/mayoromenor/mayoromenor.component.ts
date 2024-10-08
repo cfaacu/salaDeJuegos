@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DeckService } from '../../../services/deck.service';
 import { Carta } from '../../../clases/carta';
+import { AuthService } from '../../../services/auth.service';
+import { StorageService } from '../../../services/storage.service';
+import { Puntuacion } from '../../../clases/puntuacion';
 
 @Component({
   selector: 'app-mayoromenor',
@@ -15,7 +18,7 @@ export class MayoromenorComponent implements OnInit {
   mensaje: string = '';
   juegoTerminado: boolean = false;
 
-  constructor(private deckService: DeckService) {}
+  constructor(private deckService: DeckService, public auth : AuthService, public storage : StorageService) {}
 
   ngOnInit(): void {
     this.iniciarJuego();
@@ -29,7 +32,7 @@ export class MayoromenorComponent implements OnInit {
       this.mensaje = '';
       this.juegoTerminado = false;
   
-      // Saca las cartas iniciales
+
       this.cartaActual = await this.sacarCarta();
       this.cartaSiguiente = await this.sacarCarta();
   
@@ -69,8 +72,7 @@ export class MayoromenorComponent implements OnInit {
   
     const valorActual = this.obtenerValor(this.cartaActual.value);
     const valorSiguiente = this.obtenerValor(this.cartaSiguiente.value);
-  
-    // Verifica la adivinanza
+
     if ((opcion === 'mayor' && valorSiguiente > valorActual) || 
         (opcion === 'menor' && valorSiguiente < valorActual)) {
       this.puntaje += 10;
@@ -81,14 +83,15 @@ export class MayoromenorComponent implements OnInit {
       if (this.intentos === 0) {
         this.juegoTerminado = true;
         this.mensaje = '¡Perdiste! ¿Quieres volver a jugar?';
+
+        this.guardarPuntaje();
       }
     }
   
-    // Actualiza las cartas
+
     this.cartaActual = this.cartaSiguiente;
-    this.cartaSiguiente = await this.sacarCarta(); // Saca una nueva carta
+    this.cartaSiguiente = await this.sacarCarta(); 
   
-    // Verifica que la nueva carta no sea null
     if (this.cartaSiguiente) {
       console.log('Nueva Carta Siguiente:', this.cartaSiguiente);
     } else {
@@ -97,8 +100,24 @@ export class MayoromenorComponent implements OnInit {
   }
   
   
-  
-  
+  guardarPuntaje() {
+    if (this.auth.usuario) {
+      const puntuacion: Puntuacion = {
+        email: this.auth.usuario.email,
+        puntuacion: this.puntaje,
+        fecha: new Date(),
+        juego: 'mayoromenor'
+      };
+
+      this.storage.saveDocNoId(puntuacion, 'puntuaciones')
+        .then(() => {
+          console.log('Puntuación guardada con éxito');
+        })
+        .catch((error) => {
+          console.error('Error al guardar la puntuación: ', error);
+        });
+    }
+  }
   
 
   obtenerValor(valor: string): number {

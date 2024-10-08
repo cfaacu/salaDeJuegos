@@ -2,9 +2,13 @@
     <h1>Chat</h1>
     <div class="mensajes py-1 border border-info">
         <div class="mt-4" *ngIf="mensajes && mensajes.length">
-            <div *ngFor="let _mensaje of mensajes" class="border my-2 rounded shadow-sm px-5 py-2">
-                <span class="text-user"> {{_mensaje.usuario!.email}}: </span>
-                <span class="ml-3 text-muted"> {{_mensaje.hora}}</span>
+            <div *ngFor="let _mensaje of mensajes" 
+                 [ngClass]="{'mensaje-usuario': _mensaje.usuario?.email === authService.getUser?.email, 'mensaje-otro': _mensaje.usuario?.email !== authService.getUser?.email}" 
+                 class="border my-2 rounded shadow-sm px-5 py-2">
+                <span *ngIf="_mensaje.usuario?.email !== authService.getUser?.email" class="text-user"> {{_mensaje.usuario!.email}}: </span>
+                <span class="ml-3 text-muted"> 
+                    {{formatHora(_mensaje.hora)}}
+                </span>
                 <br>
                 <span> {{_mensaje.mensaje}}</span>
             </div>

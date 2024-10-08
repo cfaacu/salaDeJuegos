@@ -1,25 +1,26 @@
 <div class="container">
-    <h1>Juego del Ahorcado</h1>
-    <p>Intentos restantes: {{ intentosRestantes }}</p>
-    <p>Puntaje: {{ puntaje }}</p>
-    <p class="palabra">{{ palabraMostrada }}</p>
+  <h1>Juego del Ahorcado</h1>
+  <p>Intentos restantes: {{ intentosRestantes }}</p>
+  <p>Puntaje: {{ puntaje }}</p>
+  <p class="palabra">{{ palabraMostrada }}</p>
+
+  <img [src]="imagenActual" alt="Estado del juego" class="imagen-ahorcado">
   
-    <div *ngIf="isJuegoTerminado()">
-      <h2 *ngIf="hasGanado()" class="ganaste">¡Ganaste!</h2>
-      <h2 *ngIf="!hasGanado()" class="perdiste">¡Perdiste! La palabra era "{{ palabraSeleccionada }}".</h2>
-      <button (click)="reiniciarJuego()" class="reiniciar-btn">Reiniciar Juego</button>
-    </div>
-  
-    <div *ngIf="!isJuegoTerminado()" class="teclado">
-      <h3>Selecciona una letra:</h3>
-      <div class="teclado-buttons">
-        <button *ngFor="let letra of 'abcdefghijklmnñopqrstuvwxyz'.split('')" 
-                (click)="ingresarLetra(letra)" 
-                [disabled]="letrasIngresadas.includes(letra)" 
-                [class.usada]="letrasIngresadas.includes(letra)">
-          {{ letra.toUpperCase() }}
-        </button>
-      </div>
+  <h3 *ngIf="intentosRestantesPorPalabra <= 0 || hasGanado()" [ngClass]="{'ganaste': hasGanado(), 'perdiste': !hasGanado()}">{{mensaje}}</h3>
+
+  <div *ngIf="isJuegoTerminado()">
+    <button (click)="reiniciarJuego()" class="reiniciar-btn">Reiniciar Juego</button>
+  </div>
+
+  <div *ngIf="!isJuegoTerminado()" class="teclado">
+    <h3>Selecciona una letra:</h3>
+    <div class="teclado-buttons">
+      <button *ngFor="let letra of 'abcdefghijklmnñopqrstuvwxyz'.split('')" 
+              (click)="ingresarLetra(letra)" 
+              [disabled]="letrasIngresadas.includes(letra)" 
+              [class.usada]="letrasIngresadas.includes(letra)">
+        {{ letra.toUpperCase() }}
+      </button>
     </div>
   </div>
-  
+</div>

@@ -7,7 +7,6 @@ import { MayoromenorComponent } from './mayoromenor/mayoromenor.component';
 import { PreguntadosComponent } from './preguntados/preguntados.component';
 import { FormsModule } from '@angular/forms';
 import { DeckService } from '../../services/deck.service';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,16 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
     MayoromenorComponent,
     PreguntadosComponent
   ],
-  exports: [
-    AhorcadoComponent,
-    MayoromenorComponent,
-    PreguntadosComponent
-  ],
+  exports: [],
   imports: [
     CommonModule,
     JuegosRoutingModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ]
 })
 export class JuegosModule { }

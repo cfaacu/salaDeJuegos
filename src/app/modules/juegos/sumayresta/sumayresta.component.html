@@ -1,0 +1,43 @@
+<div class="game-container">
+    <h2>Juego Suma o Resta</h2>
+  
+    <div *ngIf="!gameStarted">
+      <button (click)="startGame()">Iniciar Juego</button>
+    </div>
+  
+    <div *ngIf="gameStarted">
+      <div *ngIf="count < 5">
+        <p *ngIf="count === 0">Número mostrado: 
+          <span class="circle">{{ displayedNumber }}</span>
+        </p>
+        <p *ngIf="count > 0">
+          <span class="circle">{{ currentOperators[count - 1] }} {{ displayedNumber }}</span>
+        </p>
+      </div>
+  
+      <div *ngIf="count === 5">
+        <h3>Todos los números han sido mostrados. Ingresa tu respuesta:</h3>
+        <input type="number" [(ngModel)]="userAnswer" placeholder="Tu respuesta" />
+        <button (click)="submitAnswer()">Enviar</button>
+      </div>
+  
+      <div *ngIf="count === 5 && canAnswer">
+        <h3>Puntuación final: {{ score }}</h3>
+        <div class="score-board">
+          <h3>Puntuación: {{ score }}</h3>
+          <h3>Intentos restantes: {{ attempts }}</h3>
+        </div>
+      </div>
+  
+      <div *ngIf="attempts === 0">
+        <h3>Juego terminado</h3>
+        <button (click)="resetGame()">Reiniciar juego</button>
+      </div>
+  
+      <!-- Mensaje de resultado -->
+      <div *ngIf="message" [ngClass]="messageClass" class="message">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+  

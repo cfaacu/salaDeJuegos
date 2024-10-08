@@ -1,0 +1,51 @@
+<div class="encuesta-container">
+  <h2>Encuesta</h2>
+  <form [formGroup]="encuestaForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group left">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" type="text" formControlName="nombre" />
+        <div *ngIf="submitted && f.nombre.errors" class="error">Este campo es requerido.</div>
+
+        <label for="apellido">Apellido:</label>
+        <input id="apellido" type="text" formControlName="apellido" />
+        <div *ngIf="submitted && f.apellido.errors" class="error">Este campo es requerido.</div>
+
+        <label for="edad">Edad:</label>
+        <input id="edad" type="number" formControlName="edad" />
+        <div *ngIf="submitted && f.edad.errors" class="error">Edad debe ser entre 18 y 99 años.</div>
+
+        <label for="telefono">Número de teléfono:</label>
+        <input id="telefono" type="text" formControlName="telefono" />
+        <div *ngIf="submitted && f.telefono.errors" class="error">Teléfono debe ser solo números y no más de 10 caracteres.</div>
+      </div>
+
+      <div class="form-group right">
+        <label>¿Le parece divertida la página?</label>
+        <div class="radio-group">
+          <label class="custom-radio">
+            <input type="radio" formControlName="pregunta1" value="si" />
+            <span class="radio-checkmark"></span>
+            Sí
+          </label>
+          <label class="custom-radio">
+            <input type="radio" formControlName="pregunta1" value="no" />
+            <span class="radio-checkmark"></span>
+            No
+          </label>
+        </div>
+        <div *ngIf="submitted && f.pregunta1.errors" class="error">Este campo es requerido.</div>
+
+        <label for="pregunta2">¿Cuál es tu juego favorito en la sala?:</label>
+        <input id="pregunta2" type="text" formControlName="pregunta2" />
+        <div *ngIf="submitted && f.pregunta2.errors" class="error">Este campo es requerido.</div>
+
+        <label for="pregunta3">¿Qué mejoras sugerirías para la sala de juegos?:</label>
+        <input id="pregunta3" type="text" formControlName="pregunta3" />
+        <div *ngIf="submitted && f.pregunta3.errors" class="error">Este campo es requerido.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Enviar</button>
+  </form>
+</div>

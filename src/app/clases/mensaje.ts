@@ -1,7 +1,7 @@
-import { Usuario } from "./usuario";
+import { Timestamp } from '@angular/fire/firestore';
 
-export class Mensaje {
-    usuario!: Usuario | undefined;
-    hora!: string;
-    mensaje!: string;
+export interface Mensaje {
+    usuario: any;  
+    hora: Timestamp;  
+    mensaje: string;
 }

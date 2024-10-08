@@ -13,7 +13,7 @@ html, body {
     height: 100%;
     padding: 20px; 
     box-sizing: border-box; 
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
   .teclado {
@@ -74,4 +74,8 @@ html, body {
     background-color: #218838; 
   }
   
+  .imagen-ahorcado {
+    margin-top: 20px;
+    width: 150px; 
+}
 

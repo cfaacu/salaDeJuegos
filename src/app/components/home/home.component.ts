@@ -16,10 +16,9 @@ export class HomeComponent {
 
   showChat: boolean = false;
   buttonText: string = 'Mostrar Chat';
-
+  
   constructor(public auth:AuthService)
   {
-
   }
 
   toggleChat(): void {
