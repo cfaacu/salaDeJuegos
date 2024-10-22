@@ -1,0 +1,41 @@
+.top-scores {
+  background: linear-gradient(180deg, rgba(221, 249, 255, 1) 0%, rgba(205, 205, 255, 1) 100%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ancho completo */
+  margin-top: 0px; /* Sin margen */
+  max-height: 90vh; /* Altura máxima del contenedor */
+  overflow-y: auto; /* Habilitar scroll vertical */
+
+}
+
+h2 {
+  color: #004080;
+  text-align: center;
+}
+
+.game-section {
+  margin-bottom: 20px; /* Espacio entre secciones de juegos */
+}
+
+table {
+  width: 100%; /* Ancho completo de la tabla */
+  border-collapse: collapse; /* Colapsar bordes */
+  margin-top: 10px; /* Espacio superior de la tabla */
+}
+
+th, td {
+  border: 1px solid #00796b; /* Borde para celdas */
+  padding: 10px;
+  text-align: left; /* Alinear texto a la izquierda */
+}
+
+th {
+  background-color: #004080; /* Color de fondo para encabezados */
+  color: white; /* Color del texto en encabezados */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e0f7fa; /* Fondo alternativo para filas pares */
+}

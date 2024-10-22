@@ -5,7 +5,7 @@ import { setDoc, doc, Firestore, getDoc, collection, addDoc } from '@angular/fir
   providedIn: 'root'
 })
 export class StorageService {
-  constructor(private firestore: Firestore) { }
+  constructor(public firestore: Firestore) { }
 
   saveDoc(data: any, path: string, id: string) {
     const docRef = doc(this.firestore, `${path}/${id}`);
@@ -16,6 +16,7 @@ export class StorageService {
     const collectionRef = collection(this.firestore, path);
     return addDoc(collectionRef, data);
   }
+
   async getById(id: string, path: string): Promise<any> {
     const docRef = doc(this.firestore, `${path}/${id}`);
     const docSnap = await getDoc(docRef);

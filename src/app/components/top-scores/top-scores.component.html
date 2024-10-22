@@ -1,0 +1,22 @@
+<div class="top-scores">
+  <h2>Puntuaciones</h2>
+  <div *ngFor="let juego of juegos" class="game-section">
+    <h3>{{ juego }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Puntuación</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let score of topScores[juego]">
+          <td>{{ score.email }}</td>
+          <td>{{ score.puntuacion }}</td>
+          <td>{{ formatHora(score.fecha) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
